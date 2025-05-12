@@ -1,2 +1,3 @@
 # random-stuff-games
-repo for all my games ig
+A neat folder for personal use to store games I made.
+Try playing some games!
