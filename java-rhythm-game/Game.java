@@ -51,6 +51,16 @@ public class Game extends JPanel implements ActionListener, KeyListener{
     for (Arrow c : arrows) {
       g.fillOval(c.x, c.y, ARROWSIZE, ARROWSIZE);
     }
+    for (int i = 0; i < player.getAllPos().length; i++) {
+      if (player.getHeldArrows()[i] == true) {
+        g.setColor(Color.lightGray);
+      } else {
+        g.setColor(Color.GRAY);
+      } 
+      g.fillOval(player.getAllPos()[i], 450, ARROWSIZE, ARROWSIZE);
+      
+    }
+    
   }
   
   
@@ -143,6 +153,7 @@ public class Game extends JPanel implements ActionListener, KeyListener{
   @Override
   public void keyReleased(KeyEvent e) {
       // react to key up events
+    player.keyReleased(e);
   }
   
   
