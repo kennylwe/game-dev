@@ -22,12 +22,12 @@ public class Player implements KeyListener{
 
     score = 0;
     rarrowposx = 750;
-    darrowposx = 350;
-    uparrowposx = 550;
+    darrowposx = 550;
+    uparrowposx = 350;
     leftarrowposx = 150;
     
     holding = new boolean[]{false, false, false, false};
-    stuff = new int[]{rarrowposx, darrowposx, uparrowposx, leftarrowposx};
+    stuff = new int[]{rarrowposx, uparrowposx, darrowposx, leftarrowposx};
       
 
     
@@ -46,11 +46,11 @@ public class Player implements KeyListener{
   public void keyReleased (KeyEvent e) {
     if (e.getKeyCode() == KeyEvent.VK_UP) {
       
-      holding[2] = false;
+      holding[1] = false;
     }
     else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
       
-      holding[1] = false;
+      holding[2] = false;
     }
     else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
       
@@ -69,11 +69,11 @@ public class Player implements KeyListener{
   public void keyPressed(KeyEvent e) {
     if (e.getKeyCode() == KeyEvent.VK_UP) {
       arrow = "UP";
-      holding[2] = true;
+      holding[1] = true;
     }
     else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
       arrow = "DOWN";
-      holding[1] = true;
+      holding[2] = true;
     }
     else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
       arrow = "RIGHT";
