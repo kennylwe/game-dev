@@ -4,15 +4,16 @@ import javax.swing.*;
 
 public class Main{
   
+  
   private static void initGame() {
     JFrame window = new JFrame("RhythmGame");
     
     window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     
-    Game game = new Game();
+    Realgame game = new Realgame();
     
     window.add(game);
-    window.addKeyListener(game);
+    window.addComponentListener(game);
     
     window.setResizable(false);
     // fit the window size around the components (just our jpanel).
