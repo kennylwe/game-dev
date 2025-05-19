@@ -17,6 +17,7 @@ public class Game extends JPanel implements ActionListener, KeyListener{
   private Player player;
   private ArrayList<Arrow> arrows;
   private int frames = 0;
+  private int score = 0;
   
   
   
@@ -48,8 +49,20 @@ public class Game extends JPanel implements ActionListener, KeyListener{
   
   public void draw(Graphics2D g) // draw must be called by paintComponent of the panel
   {
-    for (Arrow c : arrows) {
-      g.fillOval(c.x, c.y, ARROWSIZE, ARROWSIZE);
+    for (int c = 0; c < arrows.size(); c++) {
+      arrows.get(c).update();
+      if (arrows.get(c).gety() > 500) {
+        arrows.remove(c);
+      }
+      if (Math.abs(450 - arrows.get(c).gety()) < 20) {
+        for (int j = 0; j < player.getAllPos().length; j++) {
+          if (arrows.get(c).getx() == player.getAllPos()[j] && player.getHeldArrows()[j] == true) {
+            arrows.remove(c);
+          }
+        }
+      }
+      g.fillOval(arrows.get(c).x, arrows.get(c).y, ARROWSIZE, ARROWSIZE);
+      
     }
     for (int i = 0; i < player.getAllPos().length; i++) {
       if (player.getHeldArrows()[i] == true) {
@@ -91,6 +104,8 @@ public class Game extends JPanel implements ActionListener, KeyListener{
   
 
   
+
+  
   
   
  public void ArrowUpdate() {
@@ -113,13 +128,7 @@ public class Game extends JPanel implements ActionListener, KeyListener{
     
     
      
-    for (int i = 0; i < arrows.size(); i++) {
-       arrows.get(i).update();
-       if (arrows.get(i).gety() > 500) {
-         arrows.remove(i);
-       }
-       
-    }
+
      
 
     
