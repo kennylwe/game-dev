@@ -23,6 +23,10 @@ public class Arrow{
     
     
   }
+  
+  public int getx() {
+    return x;
+  }
   public String getType() {
     return type;
   }
