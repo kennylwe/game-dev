@@ -18,6 +18,8 @@ public class Game extends JPanel implements ActionListener, KeyListener{
   private ArrayList<Arrow> arrows;
   private int frames = 0;
   private int score = 0;
+  private String strscore;
+
   
   
   
@@ -31,7 +33,9 @@ public class Game extends JPanel implements ActionListener, KeyListener{
     
     timer = new Timer(FPS, this);
     arrows = new ArrayList<Arrow>();
+    strscore = "0";
     timer.start();
+    
     
   }
   
@@ -53,15 +57,20 @@ public class Game extends JPanel implements ActionListener, KeyListener{
       arrows.get(c).update();
       if (arrows.get(c).gety() > 500) {
         arrows.remove(c);
+        
       }
       if (Math.abs(450 - arrows.get(c).gety()) < 20) {
         for (int j = 0; j < player.getAllPos().length; j++) {
           if (arrows.get(c).getx() == player.getAllPos()[j] && player.getHeldArrows()[j] == true) {
             arrows.remove(c);
+            score += 50;
+            
           }
         }
       }
       g.fillOval(arrows.get(c).x, arrows.get(c).y, ARROWSIZE, ARROWSIZE);
+      
+      
       
     }
     for (int i = 0; i < player.getAllPos().length; i++) {
@@ -84,6 +93,12 @@ public class Game extends JPanel implements ActionListener, KeyListener{
     super.paintComponent(g);
     Graphics2D g2 = (Graphics2D) g;
     draw(g2);
+    
+    g2.setFont(new Font("TimesRoman", Font.PLAIN, 30));
+    g2.setColor(Color.GRAY);
+    
+    
+    g2.drawString(strscore, 650, 100);
     //g.drawImage(image, x, y, this); // draw the image at the updated position
     
     
@@ -110,9 +125,10 @@ public class Game extends JPanel implements ActionListener, KeyListener{
   
  public void ArrowUpdate() {
     frames++;
-    if (frames % 10 == 0) { //If the remainder of the current frame divided by 10 is 0 run the function.
+    if (frames % 15 == 0) { //If the remainder of the current frame divided by 10 is 0 run the function.
         createArrow();
         frames = 0;
+        System.out.println(score);
     }
  }
   
@@ -125,6 +141,7 @@ public class Game extends JPanel implements ActionListener, KeyListener{
       // use this space to update the state of your game or animation
      // before the graphics are redrawn.
     ArrowUpdate();
+    strscore = "Score: " + score;
     
     
      
