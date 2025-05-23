@@ -19,7 +19,7 @@ public class Game extends JPanel implements ActionListener, KeyListener {
   private int frames = 0;
   private int score = 0;
   private String strscore;
-  // sigmaajfwqjofwe
+  // sigmaajfwqjofwelveanndvlknevwlk
 
   public Game() {
     isplaying = true;
