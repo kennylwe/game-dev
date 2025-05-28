@@ -50,6 +50,7 @@ public class Game extends JPanel implements ActionListener, KeyListener {
       arrows.get(c).update();
       if (arrows.get(c).gety() > 500) {
         arrows.remove(c);
+        score -= 50;
 
       }
       if (Math.abs(450 - arrows.get(c).gety()) < 20) {
